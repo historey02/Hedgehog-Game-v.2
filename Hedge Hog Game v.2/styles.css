@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* FONT FAMILIES TRIED
+            Chewy: "https://fonts.googleapis.com/css2?family=Chewy&display=swap"
+            Fredoka: <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+            Patrick Hand: <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Fredoka:wght@300..700&family=Patrick+Hand&display=swap" rel="stylesheet">
+Header      Luckiest Guy: <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Fredoka:wght@300..700&family=Luckiest+Guy&family=Patrick+Hand&display=swap" rel="stylesheet">
+            Caveat: <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Caveat+Brush&family=Fredoka:wght@300..700&family=Luckiest+Guy&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+*/
+
+body {
+    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #57b2ea;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    letter-spacing: 3px;
+    font-family: 'Luckiest Guy';
+    border-bottom: 3px solid rgb(46, 46, 255);
+}
+
+#hog-dollars-div {
+    font-size: 2rem;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+aside#hogSidebar {
+    width: 250px;
+    background-color: #f9ead5;
+    padding: 1rem;
+    overflow-y: auto;
+    border-right: 2px solid #ccc;
+}
+
+main#hogField {
+    flex: 1;
+    background-color: #7cce67;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+
+/* Defines size, position, and transition for all hedgehogs */
+.hedgehog {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    transition: top 1s ease, left 1s ease;
+    z-index: 999;
+}
+
+.normal {
+    transition: top 1s ease, left 1s ease;
+}
+
+.blue {
+    filter: drop-shadow(2px 2px 15px blue) brightness(1.2);
+    transition: top 0.3s ease, left 0.3s ease;
+}
+
+.cool {
+    transition: left 1s ease-in-out, top 1s ease-in-out;
+}
+
+.wizard {
+    /* Creates teleprt effect */
+    transition: none;
+}
+
+.rainbow {
+    animation: rainbowShift 2s linear infinite;
+}
+
+.karate {
+    transition: left 1s ease-in-out, top 1s ease-in-out;
+}
+
+@keyframes rainbowShift {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+/* Hog Card (placeholder style) */
+.hog-card {
+    background-color: rgb(190, 140, 99);
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Patrick Hand;
+    font-size: 1.2em;
+    display: none;
+}
+
+.hog-card img {
+    width: 64px;
+    height: 64px;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hedgehog Tycoon</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chewy&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Fredoka:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Fredoka:wght@300..700&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Fredoka:wght@300..700&family=Luckiest+Guy&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Caveat+Brush&family=Fredoka:wght@300..700&family=Luckiest+Guy&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Hedgehog Hollow</h1>
+      <div id="hog-dollars-div">
+        Hog Dollars: <span id="hog-dollars-span">0</span>
+      </div>
+    </header>
+
+    <div class="container">
+      <aside id="hogSidebar">
+        <!-- Cards for each hog will go here -->
+        <div id="normal-hedgehog-card" class="hog-card">
+          <img src="./NormalHedgehog.png" alt="Normal Hedgehog" />
+          <p class="hedgehog-name">Normal Hedgehog</p>
+          <p>Price: $<span id="normal-hedgehog-price-span"></span></p>
+          <p>Owned: <span id="normal-hedgehog-owned-span"></span></p>
+          <p>Earns: $<span id="normal-hedgehog-rate-span"></span> / sec.</p>
+        </div>
+        <div id="blue-hedgehog-card" class="hog-card">
+          <img src="./BlueHedgehog.png" alt="Blue Hedgehog" />
+          <p class="hedgehog-name">Blue Hedgehog</p>
+          <p>Price: $<span id="blue-hedgehog-price-span"></span></p>
+          <p>Owned: <span id="blue-hedgehog-owned-span"></span></p>
+          <p>Earns: $<span id="blue-hedgehog-rate-span"></span> / sec.</p>
+        </div>
+        <div id="cool-hedgehog-card" class="hog-card">
+          <img src="./CoolHedgehog.png" alt="Cool Hedgehog" />
+          <p class="hedgehog-name">Cool Hedgehog</p>
+          <p>Price: $<span id="cool-hedgehog-price-span"></span></p>
+          <p>Owned: <span id="cool-hedgehog-owned-span"></span></p>
+          <p>Earns: $<span id="cool-hedgehog-rate-span"></span> / sec.</p>
+        </div>
+        <div id="wizard-hedgehog-card" class="hog-card">
+          <img src="./WizardHedgehog.png" alt="Wizard Hedgehog" />
+          <p class="hedgehog-name">Wizard Hedgehog</p>
+          <p>Price: $<span id="wizard-hedgehog-price-span"></span></p>
+          <p>Owned: <span id="wizard-hedgehog-owned-span"></span></p>
+          <p>Earns: $<span id="wizard-hedgehog-rate-span"></span> / sec.</p>
+        </div>
+        <div id="rainbow-hedgehog-card" class="hog-card">
+          <img src="./RainbowHedgehog.png" alt="Rainbow Hedgehog" />
+          <p class="hedgehog-name">Rainbow Hedgehog</p>
+          <p>Price: $<span id="rainbow-hedgehog-price-span"></span></p>
+          <p>Owned: <span id="rainbow-hedgehog-owned-span"></span></p>
+          <p>Earns: $<span id="rainbow-hedgehog-rate-span"></span> / sec.</p>
+        </div>
+        <div id="karate-hedgehog-card" class="hog-card">
+          <img src="./KarateHedgehog.png" alt="Karate Hedgehog" />
+          <p class="hedgehog-name">Karate Hedgehog</p>
+          <p>Price: $<span id="karate-hedgehog-price-span"></span></p>
+          <p>Owned: <span id="karate-hedgehog-owned-span"></span></p>
+          <p>Earns: $<span id="karate-hedgehog-rate-span"></span> / sec.</p>
+        </div>
+      </aside>
+
+      <main id="hogField">
+        <!-- Hedgehogs will roam here -->
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
