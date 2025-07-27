@@ -68,6 +68,56 @@ class Game {
         return Math.floor(basePrice * (1.01 ** owned));
         //returns the base price time 1% compounded per hedgehog of that type
     }
+
+    saveGame() {
+        const data = {
+            hogDollars: this.hogDollars,
+            hedgehogs: {
+                normal: this.hedgehogs.filter(h => h instanceof NormalHedgehog).length,
+                blue: this.hedgehogs.filter(h => h instanceof BlueHedgehog).length,
+                cool: this.hedgehogs.filter(h => h instanceof CoolHedgehog).length,
+                wizard: this.hedgehogs.filter(h => h instanceof WizardHedgehog).length,
+                rainbow: this.hedgehogs.filter(h => h instanceof RainbowHedgehog).length,
+                karate: this.hedgehogs.filter(h => h instanceof KarateHedgehog).length
+            }
+        };
+
+        localStorage.setItem('hedgehogSave', JSON.stringify(data));
+    }
+    loadGame() {
+        const saved = localStorage.getItem('hedgehogSave');
+        if (!saved) return;
+
+        const data = JSON.parse(saved);
+        this.hogDollars = data.hogDollars;
+        this.updateHogDollars();
+
+        // Restore hedgehogs
+        const typeMap = {
+            normal: NormalHedgehog,
+            blue: BlueHedgehog,
+            cool: CoolHedgehog,
+            wizard: WizardHedgehog,
+            rainbow: RainbowHedgehog,
+            karate: KarateHedgehog
+        };
+
+        for (const [key, count] of Object.entries(data.hedgehogs)) {
+            const type = typeMap[key];
+            const cardId = `${key}-hedgehog-card`;
+
+            if (count > 0) {
+                this.renderHogCard(type, cardId);
+                for (let i = 0; i < count; i++) {
+                    const hog = new type();
+                    this.addHog(hog);
+                }
+                this.updateHogCard(type, cardId); // 💡 this line ensures correct count + rate shown
+            }
+        }
+    }
+
+
     gameLoop() {
         setInterval(() => {
             this.earnHogDollars();
@@ -505,6 +555,7 @@ karateHedgehogCard.addEventListener('click', (e) => {
 });
 
 const game = new Game(100000);
-
-
-//
+game.loadGame();
+setInterval(() => {
+    game.saveGame();
+}, 5000); // Save every 5 seconds
