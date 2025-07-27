@@ -75,7 +75,7 @@ aside#hogSidebar {
 
 main#hogField {
     flex: 1;
-    background-color: #7cce67;
+    background-color: #67c250;
     position: relative;
     overflow: hidden;
     padding: 1rem;
@@ -182,4 +182,13 @@ main#hogField {
         line-height: 1em;
         font-size: 1.2em;
     }
+}
+
+#reset-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    background-color: rgba(242, 61, 61, 0.874);
+    border-radius: 5px;
 }

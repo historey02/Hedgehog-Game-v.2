@@ -21,7 +21,7 @@ class Game {
         const rateSpan = document.getElementById(`${type}rate-span`);
         priceSpan.textContent = this.getNextPrice(hedgehogType);
         ownedSpan.textContent = count;
-        rateSpan.textContent = incomePerHog * count;
+        rateSpan.textContent = incomePerHog * count * 0.5;
     }
     earnHogDollars() {
         this.hedgehogs.forEach((hog) => {
@@ -65,8 +65,8 @@ class Game {
     getNextPrice(hedgehogType) {
         const basePrice = hedgehogType.basePrice;
         const owned = this.hedgehogs.filter(hog => hog instanceof hedgehogType).length;
-        return Math.floor(basePrice * (1.01 ** owned));
-        //returns the base price time 1% compounded per hedgehog of that type
+        return Math.floor(basePrice * (1.05 ** owned));
+        //returns the base price time 5% compounded per hedgehog of that type
     }
 
     saveGame() {
@@ -122,7 +122,7 @@ class Game {
         setInterval(() => {
             this.earnHogDollars();
             this.updateHogDollars();
-        }, 1000);
+        }, 2000);
     }
 }
 
@@ -255,7 +255,7 @@ class BlueHedgehog extends Hedgehog {
     }
 
     checkPoints() {
-        if (game.hedgehogs.filter(hog => hog instanceof BlueHedgehog).length >= 20) {
+        if (game.hedgehogs.filter(hog => hog instanceof BlueHedgehog).length >= 30) {
             game.renderHogCard(CoolHedgehog, 'cool-hedgehog-card');
         }
     }
@@ -326,7 +326,7 @@ class CoolHedgehog extends Hedgehog {
         }, randomTime);
     }
     checkPoints() {
-        if (game.hedgehogs.filter(hog => hog instanceof CoolHedgehog).length >= 20) {
+        if (game.hedgehogs.filter(hog => hog instanceof CoolHedgehog).length >= 40) {
             game.renderHogCard(WizardHedgehog, 'wizard-hedgehog-card');
         }
     }
@@ -388,7 +388,7 @@ class WizardHedgehog extends Hedgehog {
         }, randomTime);
     }
     checkPoints() {
-        if (game.hedgehogs.filter(hog => hog instanceof WizardHedgehog).length >= 20) {
+        if (game.hedgehogs.filter(hog => hog instanceof WizardHedgehog).length >= 50) {
             game.renderHogCard(RainbowHedgehog, 'rainbow-hedgehog-card');
         }
     }
@@ -475,7 +475,7 @@ class RainbowHedgehog extends Hedgehog {
     }
 
     checkPoints() {
-        if (game.hedgehogs.filter(hog => hog instanceof RainbowHedgehog).length >= 20) {
+        if (game.hedgehogs.filter(hog => hog instanceof RainbowHedgehog).length >= 60) {
             game.renderHogCard(KarateHedgehog, 'karate-hedgehog-card');
         }
     }
@@ -554,8 +554,14 @@ karateHedgehogCard.addEventListener('click', (e) => {
     game.buyHedgehog(KarateHedgehog, e.currentTarget.id);
 });
 
-const game = new Game(100000);
+const game = new Game(10);
 game.loadGame();
+game.updateHogDollars();
 setInterval(() => {
     game.saveGame();
 }, 5000); // Save every 5 seconds
+
+function resetSave() {
+    localStorage.removeItem('hedgehogSave');
+    location.reload();
+}
